@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>K&N Consulting · Logistics Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080c0a;
+  --olive:#2e3d1f;
+  --olive-mid:#445929;
+  --olive-light:#7a9c42;
+  --olive-pale:#c8d9a8;
+  --tan:#bfac8e;
+  --cream:#f2ede4;
+  --cream-dark:#e6dfd3;
+  --white:#ffffff;
+  --red:#8c1c1c;
+}
+html{scroll-behavior:smooth}
+body{font-family:'IBM Plex Sans',sans-serif;background:var(--cream);color:var(--black);overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.9rem 5%;background:var(--black);border-bottom:1px solid var(--olive-mid)}
+.nav-logo{display:flex;align-items:center;gap:1rem}
+.mos-tag{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--olive-light);border:1px solid var(--olive-mid);padding:0.2rem 0.5rem;letter-spacing:0.1em}
+.nav-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--white);letter-spacing:0.1em}
+.nav-name span{color:var(--olive-light)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--olive-light)}
+.nav-cta{background:var(--olive-mid)!important;color:var(--white)!important;padding:0.45rem 1.1rem;font-size:0.75rem!important}
+
+.hero{background:var(--black);display:grid;grid-template-columns:1.1fr 0.9fr;min-height:100vh;align-items:stretch}
+.hero-left{padding:5rem 5% 4rem 6%;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,0.06)}
+.hero-mos{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;color:var(--olive-light);margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem}
+.hero-mos::before{content:'';display:block;width:20px;height:1px;background:var(--olive-light)}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,6vw,5.5rem);color:var(--white);letter-spacing:0.06em;line-height:0.9;margin-bottom:1.25rem}
+.hero-name .accent{color:var(--olive-light)}
+.hero-rank{display:inline-flex;align-items:center;gap:0.6rem;margin-bottom:2rem}
+.rank-pill{background:var(--red);color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.25rem 0.65rem}
+.rank-title{font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.08em;font-weight:300}
+.hero-hook{font-size:1.15rem;color:rgba(255,255,255,0.85);line-height:1.6;font-weight:300;max-width:460px;margin-bottom:0.75rem}
+.hero-hook strong{color:var(--olive-pale);font-weight:500}
+.hero-sub{font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;max-width:440px;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap}
+.btn-p{background:var(--olive-mid);color:var(--white);padding:0.8rem 1.75rem;text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s;display:inline-block}
+.btn-p:hover{background:var(--olive-light)}
+.btn-g{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.6);padding:0.8rem 1.75rem;text-decoration:none;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;transition:border-color 0.2s,color 0.2s;display:inline-block}
+.btn-g:hover{border-color:var(--olive-light);color:var(--olive-light)}
+
+.hero-right{background:var(--olive);display:flex;flex-direction:column;justify-content:center;padding:4rem 2.5rem;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,0.07) 0,rgba(0,0,0,0.07) 1px,transparent 0,transparent 24px),repeating-linear-gradient(90deg,rgba(0,0,0,0.07) 0,rgba(0,0,0,0.07) 1px,transparent 0,transparent 24px)}
+.mos-block{position:relative;z-index:1}
+.mos-header{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--olive-pale);opacity:0.7;margin-bottom:1.5rem}
+.capability{border-bottom:1px solid rgba(255,255,255,0.1);padding:1rem 0;display:flex;gap:1rem;align-items:flex-start}
+.cap-code{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--olive-light);min-width:80px;letter-spacing:0.05em;margin-top:2px}
+.cap-text{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.5;font-weight:300}
+.cap-text strong{color:var(--white);font-weight:500}
+
+.strip{background:var(--olive);overflow:hidden;white-space:nowrap;padding:0.65rem 0;border-top:1px solid var(--olive-light);border-bottom:1px solid var(--olive-mid)}
+.strip-inner{display:inline-flex;gap:2rem;animation:marquee 30s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--olive-pale)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.section{padding:5.5rem 5%}
+.s-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--olive-light);margin-bottom:0.75rem}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:0.05em;color:var(--black);line-height:1;margin-bottom:1rem}
+.s-sub{font-size:0.9rem;color:#666;line-height:1.8;max-width:500px;font-weight:300;margin-bottom:3rem}
+
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(0,0,0,0.1)}
+.svc{background:var(--cream);padding:2rem 1.75rem;border-left:3px solid transparent;transition:border-color 0.25s,background 0.25s}
+.svc:hover{background:var(--white);border-left-color:var(--olive-light)}
+.svc-mos{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--olive-light);letter-spacing:0.12em;margin-bottom:0.75rem}
+.svc-name{font-size:0.95rem;font-weight:600;color:var(--black);margin-bottom:0.5rem}
+.svc-desc{font-size:0.85rem;color:#666;line-height:1.7;font-weight:300}
+.svc-tag{display:inline-block;margin-top:0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--olive-light);letter-spacing:0.08em;border-top:1px solid var(--olive-light);padding-top:0.4rem}
+
+.about{background:var(--black)}
+.about .s-title{color:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.about-copy p{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.8;font-weight:300;margin-bottom:1rem}
+.about-copy p strong{color:var(--olive-pale);font-weight:500}
+.quals{margin-top:2rem;display:flex;flex-direction:column}
+.qual{display:flex;gap:1rem;align-items:flex-start;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.qual-bullet{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--olive-light);margin-top:3px;white-space:nowrap}
+.qual-text{font-size:0.85rem;color:rgba(255,255,255,0.5);font-weight:300;line-height:1.5}
+.qual-text strong{color:rgba(255,255,255,0.8);font-weight:500}
+
+.translate{background:var(--black);border:1px solid rgba(255,255,255,0.08);padding:2rem}
+.translate-label{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--olive-light);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+.xlate-row{display:grid;grid-template-columns:1fr auto 1fr;gap:0.75rem;align-items:center;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.8rem}
+.xlate-mil{color:rgba(255,255,255,0.5);font-weight:300}
+.xlate-arrow{color:var(--olive-light);font-size:0.7rem;font-family:'IBM Plex Mono',monospace}
+.xlate-civ{color:rgba(255,255,255,0.85);font-weight:500}
+
+.process{background:var(--cream-dark)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));border:1px solid rgba(0,0,0,0.1)}
+.step{padding:2rem 1.5rem;border-right:1px solid rgba(0,0,0,0.08)}
+.step:last-child{border-right:none}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(0,0,0,0.06);line-height:1;margin-bottom:0.75rem}
+.step-name{font-size:0.85rem;font-weight:600;color:var(--olive);margin-bottom:0.4rem;letter-spacing:0.03em}
+.step-desc{font-size:0.8rem;color:#777;line-height:1.6;font-weight:300}
+
+/* CONTACT FORM SECTION */
+.contact{background:var(--black)}
+.contact .s-title{color:var(--white)}
+.contact .s-sub{color:rgba(255,255,255,0.45)}
+.form-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:2.5rem;max-width:760px}
+.section-divider{font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive-light);margin:2rem 0 1.25rem;padding-bottom:0.6rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.section-divider:first-child{margin-top:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.field-row.single{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:0.4rem}
+.field label{font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.04em}
+.field input,.field select,.field textarea{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'IBM Plex Sans',sans-serif;font-size:0.875rem;padding:0.75rem 1rem;outline:none;transition:border-color 0.2s,background 0.2s;border-radius:0;width:100%;appearance:none;-webkit-appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a9c42' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer}
+.field select option{background:#1a2612;color:var(--white)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,0.25)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--olive-light);background:rgba(255,255,255,0.07)}
+.field textarea{resize:vertical;min-height:100px;line-height:1.6}
+.submit-row{margin-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.submit-note{font-size:0.75rem;color:rgba(255,255,255,0.3);font-family:'IBM Plex Mono',monospace;letter-spacing:0.04em}
+.btn-submit{background:var(--olive-mid);color:var(--white);border:none;padding:0.9rem 2.5rem;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.1s;white-space:nowrap}
+.btn-submit:hover{background:var(--olive-light)}
+.btn-submit:active{transform:scale(0.98)}
+.success{display:none;padding:3rem 2rem}
+.success-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--white);letter-spacing:0.06em;margin-bottom:0.5rem}
+.success-sub{font-size:0.875rem;color:rgba(255,255,255,0.5);font-weight:300;line-height:1.7}
+
+footer{background:var(--black);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--olive-mid)}
+.f-logo{font-family:'Bebas Neue',sans-serif;color:rgba(255,255,255,0.4);font-size:1.1rem;letter-spacing:0.1em}
+.f-logo span{color:var(--olive-light)}
+.f-mono{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.06em}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .nav-links{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .field-row{grid-template-columns:1fr}
+  .form-card{padding:1.75rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <span class="nav-name">K<span>&</span>N Consulting</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="nav-cta">Work with us</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-name">K<span class="accent">&</span>N<br>Consulting</h1>
+    <div class="hero-rank">
+      <span class="rank-pill">USMC Veteran-Led</span>
+      <span class="rank-title">Business Logistics Consulting</span>
+    </div>
+    <p class="hero-hook">Trained to move <strong>cargo, personnel, and all other supplies</strong> — by air, sea, and land — on deadline, under the highest pressure imaginable.</p>
+    <p class="hero-sub">That same discipline, precision, and time-critical execution is now available to your business. Every shipment treated like a mission. Every deadline non-negotiable.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-p">Book a free consultation</a>
+      <a href="#services" class="btn-g">See services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="mos-block">
+      <div class="mos-header">// MOS 0431 Core Capabilities</div>
+      <div class="capability">
+        <span class="cap-code">FDP&amp;E</span>
+        <span class="cap-text"><strong>Force Deployment Planning</strong> — coordinating the movement of cargo, personnel, and all other supplies across every mode of transport</span>
+      </div>
+      <div class="capability">
+        <span class="cap-code">TPFDD</span>
+        <span class="cap-text"><strong>Time-Phased Deployment</strong> — executing strategic mobility plans under time-critical conditions</span>
+      </div>
+      <div class="capability">
+        <span class="cap-code">ITV</span>
+        <span class="cap-text"><strong>In-Transit Visibility</strong> — real-time tracking and interfacing movement data with load-planning systems</span>
+      </div>
+      <div class="capability">
+        <span class="cap-code">MAGTF</span>
+        <span class="cap-text"><strong>Multi-Level Operations</strong> — managing logistics at unit, task force, and joint operation levels simultaneously</span>
+      </div>
+      <div class="capability">
+        <span class="cap-code">HAZMAT</span>
+        <span class="cap-text"><strong>Hazardous Material Certification</strong> — certifying and managing compliant shipment of regulated cargo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>Multi-Modal Transport</span><span>·</span><span>Load Planning</span><span>·</span><span>Force Deployment</span><span>·</span><span>In-Transit Visibility</span><span>·</span><span>Freight Procurement</span><span>·</span><span>Hazmat Compliance</span><span>·</span><span>Network Design</span><span>·</span><span>Cargo Marshaling</span><span>·</span><span>Lift Forecasting</span><span>·</span><span>3PL Selection</span><span>·</span>
+    <span>Multi-Modal Transport</span><span>·</span><span>Load Planning</span><span>·</span><span>Force Deployment</span><span>·</span><span>In-Transit Visibility</span><span>·</span><span>Freight Procurement</span><span>·</span><span>Hazmat Compliance</span><span>·</span><span>Network Design</span><span>·</span><span>Cargo Marshaling</span><span>·</span><span>Lift Forecasting</span><span>·</span><span>3PL Selection</span><span>·</span>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="s-label">// Services</div>
+  <h2 class="s-title">What MOS 0431<br>translates to for your business.</h2>
+  <p class="s-sub">Every service K&N Consulting offers is rooted in skills the Marine Corps spent years developing — applied directly to the logistics challenges your business faces today.</p>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="svc-mos">FDP&amp;E → Freight Strategy</div>
+      <div class="svc-name">Freight & Carrier Optimization</div>
+      <p class="svc-desc">Trained to coordinate shipments across air, sea, and ground under the tightest timelines. Now applied to your carrier RFPs, rate negotiations, and modal decisions.</p>
+      <span class="svc-tag">Carrier RFPs · Rate negotiation · Modal strategy</span>
+    </div>
+    <div class="svc">
+      <div class="svc-mos">Load Planning → Network Design</div>
+      <div class="svc-name">Supply Chain Network Design</div>
+      <p class="svc-desc">Built load plans that had to be right the first time, every time. That same precision now shapes how we design your warehouse footprint and distribution strategy.</p>
+      <span class="svc-tag">Warehouse placement · Hub modeling</span>
+    </div>
+    <div class="svc">
+      <div class="svc-mos">ITV → Visibility &amp; Tracking</div>
+      <div class="svc-name">Shipment Visibility & Control</div>
+      <p class="svc-desc">Managed in-transit visibility for large-scale deployments. Now helping businesses implement real-time tracking, reduce lost freight, and hold carriers accountable.</p>
+      <span class="svc-tag">TMS evaluation · Carrier scorecards</span>
+    </div>
+    <div class="svc">
+      <div class="svc-mos">Combat Logistics → Ops Audit</div>
+      <div class="svc-name">Supply Chain Diagnostic</div>
+      <p class="svc-desc">Compiled and maintained logistics support data under extreme operational pressure. A full audit of your supply chain to surface hidden costs and opportunities.</p>
+      <span class="svc-tag">Delivered in 4–6 weeks</span>
+    </div>
+    <div class="svc">
+      <div class="svc-mos">HAZMAT Knowledge → Compliance Advisory</div>
+      <div class="svc-name">Freight Compliance & Hazmat Awareness</div>
+      <p class="svc-desc">Deep working knowledge of hazardous materials classification, documentation, and shipping requirements gained through military training. We help your team understand compliance frameworks and identify gaps — connecting you with certified handlers where required.</p>
+      <span class="svc-tag">DOT · IATA · IMDG frameworks</span>
+    </div>
+    <div class="svc">
+      <div class="svc-mos">Marshaling → 3PL Selection</div>
+      <div class="svc-name">3PL & Vendor Selection</div>
+      <p class="svc-desc">Coordinated marshaling operations with full accountability and zero bias. That same objectivity applied to evaluating and selecting your logistics partners.</p>
+      <span class="svc-tag">RFP · Scoring · Negotiation</span>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="about-copy">
+      <div class="s-label">// About K&N Consulting</div>
+      <h2 class="s-title" style="color:var(--white)">The training<br>behind the work.</h2>
+      <p>K&N Consulting is led by <strong>Keilondre White</strong>, a MOS 0431 Logistics/Embarkation Specialist and United States Marine Corps veteran, trained at Camp Johnson, NC — one of the most demanding logistics roles in any branch of service.</p>
+      <p>As a 0431, Keilondre's mission was to ensure that cargo, personnel, and all other supplies arrived at the right place, at the right time, via the right mode of transport. Every operation was time-critical. Every decision carried real weight.</p>
+      <p>That experience builds a standard of execution that no corporate environment can replicate — and it's the same standard <strong>K&N Consulting brings to every business engagement.</strong></p>
+      <div class="quals">
+        <div class="qual">
+          <span class="qual-bullet">0431</span>
+          <span class="qual-text"><strong>Logistics/Embarkation Specialist Course</strong> — Logistics Operations School, Camp Johnson, NC</span>
+        </div>
+        <div class="qual">
+          <span class="qual-bullet">SECRET</span>
+          <span class="qual-text"><strong>Secret Security Clearance</strong> — Department of Defense background investigation cleared</span>
+        </div>
+        <div class="qual">
+          <span class="qual-bullet">AIS</span>
+          <span class="qual-text"><strong>Automated Information Systems</strong> — trained in AIS used across the Defense Transportation System</span>
+        </div>
+        <div class="qual">
+          <span class="qual-bullet">MAGTF</span>
+          <span class="qual-text"><strong>Joint Operations Experience</strong> — unit, task force, and multi-service logistics coordination</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="translate">
+        <div class="translate-label">// MOS 0431 → Business Translation</div>
+        <div class="xlate-row"><span class="xlate-mil">Force Deployment Planning</span><span class="xlate-arrow">→</span><span class="xlate-civ">Supply chain network design</span></div>
+        <div class="xlate-row"><span class="xlate-mil">TPFDD Execution</span><span class="xlate-arrow">→</span><span class="xlate-civ">Demand & capacity planning</span></div>
+        <div class="xlate-row"><span class="xlate-mil">Aircraft & ship load plans</span><span class="xlate-arrow">→</span><span class="xlate-civ">Freight load optimization</span></div>
+        <div class="xlate-row"><span class="xlate-mil">In-Transit Visibility</span><span class="xlate-arrow">→</span><span class="xlate-civ">Shipment tracking & TMS</span></div>
+        <div class="xlate-row"><span class="xlate-mil">Marshaling operations</span><span class="xlate-arrow">→</span><span class="xlate-civ">Warehouse & yard management</span></div>
+        <div class="xlate-row"><span class="xlate-mil">HAZMAT certification</span><span class="xlate-arrow">→</span><span class="xlate-civ">DOT/IATA freight compliance</span></div>
+        <div class="xlate-row"><span class="xlate-mil">Combat logistics support</span><span class="xlate-arrow">→</span><span class="xlate-civ">Carrier procurement & RFPs</span></div>
+        <div class="xlate-row"><span class="xlate-mil">Lift requirement forecasting</span><span class="xlate-arrow">→</span><span class="xlate-civ">Inventory & demand planning</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="s-label">// Engagement Process</div>
+  <h2 class="s-title">Simple. Focused.<br>Results-driven.</h2>
+  <p class="s-sub">Four clear phases from first conversation to measurable outcomes — built around speed, clarity, and accountability.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-name">Discovery Call</div>
+      <p class="step-desc">A free 30-minute conversation to understand your operation, your goals, and where your biggest challenges live.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-name">Assessment & Analysis</div>
+      <p class="step-desc">A deep look at your data, freight spend, and processes to identify exactly where value is being lost and where opportunity exists.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-name">Strategic Plan</div>
+      <p class="step-desc">A clear, prioritized roadmap with projected outcomes, timelines, and defined ownership — ready to act on.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-name">Execute & Review</div>
+      <p class="step-desc">Hands-on implementation support followed by a full review of outcomes achieved and next steps identified.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="s-label">// Book a Discovery Call</div>
+  <h2 class="s-title" style="color:var(--white)">Let's talk about<br><span style="color:var(--olive-light)">your logistics.</span></h2>
+  <p class="s-sub">Tell us a little about your business before the call so Keilondre can come prepared with real insights — not generic questions.</p>
+  <div class="form-card">
+    <div id="form-body">
+      <div class="section-divider">// Your contact info</div>
+      <div class="field-row">
+        <div class="field"><label>First name</label><input type="text" placeholder="John" id="fname"/></div>
+        <div class="field"><label>Last name</label><input type="text" placeholder="Smith" id="lname"/></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Email address</label><input type="email" placeholder="you@company.com" id="email"/></div>
+        <div class="field"><label>Phone number</label><input type="tel" placeholder="(555) 000-0000" id="phone"/></div>
+      </div>
+
+      <div class="section-divider">// About your business</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Industry</label>
+          <select id="industry">
+            <option value="" disabled selected>Select your industry</option>
+            <option>Manufacturing</option>
+            <option>Distribution</option>
+            <option>Retail</option>
+            <option>E-commerce</option>
+            <option>Construction</option>
+            <option>Food & Beverage</option>
+            <option>Healthcare / Medical</option>
+            <option>Oil, Gas & Energy</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Company size</label>
+          <select id="size">
+            <option value="" disabled selected>Number of employees</option>
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–200</option>
+            <option>201–500</option>
+            <option>500+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-divider">// Your logistics challenge</div>
+      <div class="field-row single">
+        <div class="field">
+          <label>Primary challenge</label>
+          <select id="challenge">
+            <option value="" disabled selected>What's the biggest issue?</option>
+            <option>Freight costs too high</option>
+            <option>Shipment visibility & tracking</option>
+            <option>Warehouse efficiency</option>
+            <option>Carrier management</option>
+            <option>Compliance & hazmat</option>
+            <option>3PL / vendor selection</option>
+            <option>Supply chain network design</option>
+            <option>Not sure yet — need an audit</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-divider">// The call</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Preferred call format</label>
+          <select id="calltype">
+            <option value="" disabled selected>How would you like to connect?</option>
+            <option>Phone call</option>
+            <option>Video call (Zoom / Google Meet)</option>
+            <option>Either works for me</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Best time to reach you</label>
+          <select id="timing">
+            <option value="" disabled selected>Select a general time</option>
+            <option>Morning (8am – 12pm)</option>
+            <option>Afternoon (12pm – 4pm)</option>
+            <option>Evening (4pm – 7pm)</option>
+            <option>Flexible — anytime works</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row single" style="margin-bottom:0">
+        <div class="field">
+          <label>Anything else Keilondre should know? <span style="color:rgba(255,255,255,0.3);font-weight:300">(optional)</span></label>
+          <textarea placeholder="Describe your situation, current setup, or any specific goals..." id="notes"></textarea>
+        </div>
+      </div>
+
+      <div class="submit-row">
+        <span class="submit-note">// Free 30-min · No commitment</span>
+        <button class="btn-submit" onclick="handleSubmit()">Request a discovery call →</button>
+      </div>
+    </div>
+
+    <div class="success" id="success-msg">
+      <div class="success-title" style="color:var(--olive-light)">Request received.</div>
+      <p class="success-sub">Keilondre will review your information and reach out within 1 business day to confirm your discovery call. Keep an eye on your inbox.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">K<span>&</span>N Consulting</div>
+  <p class="f-mono">USMC Veteran-Led · MOS 0431 · Camp Johnson NC · © 2025</p>
+</footer>
+
+<script>
+function handleSubmit(){
+  const required=['fname','lname','email','industry','size','challenge','calltype','timing'];
+  let valid=true;
+  required.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el.value){el.style.borderColor='#8c1c1c';valid=false;}
+    else{el.style.borderColor='';}
+  });
+  if(!valid)return;
+
+  const fname    = document.getElementById('fname').value;
+  const lname    = document.getElementById('lname').value;
+  const email    = document.getElementById('email').value;
+  const phone    = document.getElementById('phone').value;
+  const industry = document.getElementById('industry').value;
+  const size     = document.getElementById('size').value;
+  const challenge= document.getElementById('challenge').value;
+  const calltype = document.getElementById('calltype').value;
+  const timing   = document.getElementById('timing').value;
+  const notes    = document.getElementById('notes').value;
+
+  const subject = encodeURIComponent('K&N Consulting — New Discovery Call Request from ' + fname + ' ' + lname);
+  const body = encodeURIComponent(
+    'NEW DISCOVERY CALL REQUEST\n' +
+    '─────────────────────────\n\n' +
+    'Name: ' + fname + ' ' + lname + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + phone + '\n\n' +
+    'Industry: ' + industry + '\n' +
+    'Company Size: ' + size + '\n\n' +
+    'Primary Challenge: ' + challenge + '\n\n' +
+    'Preferred Call Format: ' + calltype + '\n' +
+    'Best Time to Reach: ' + timing + '\n\n' +
+    'Additional Notes:\n' + (notes || 'None provided')
+  );
+
+  window.location.href = 'mailto:Knlogisticsconsulting@gmail.com?subject=' + subject + '&body=' + body;
+
+  document.getElementById('form-body').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+</script>
+</body>
+</html>
